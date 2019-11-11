@@ -22,10 +22,12 @@ if __name__ == "__main__":
     x_test, y_test = MNISTtools.loadMNIST(dataset="testing", path="MNIST_data")
 
     # Show Data and Label
+    '''
     print(x_train[0])
     print(y_train[0])
     plt.imshow(x_train[0].reshape((28,28)), cmap='gray')
     plt.show()
+    '''
 
     # Data Processing
     x_train = x_train.astype(np.float32) / 255.
@@ -70,6 +72,6 @@ if __name__ == "__main__":
     y_prob = nn.forward()
     total_acc = Accuracy(y_prob, y_test)
     print("Total Accuracy:", total_acc)
-
+    plt.title("Loss")
     plt.plot(loss_rec)
     plt.show()

@@ -2,8 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import NeuralNetwork
 
-def Visualization(x_train, y_train, y_gt, y_pred):
+def Visualization(x_train, y_train, y_gt, y_pred, title="figure"):
     plt.figure()
+    plt.title(title)
     plt.plot(x_train, y_train,'b.')
     plt.plot(x_train, y_gt, 'g.')
     plt.plot(x_train, y_pred,'r.')
@@ -21,7 +22,7 @@ if __name__ == "__main__":
     # Show Initial Curve
     nn.feed({"x":x_train})
     y_pred = nn.forward()
-    Visualization(x_train, y_train, y_gt, y_pred)
+    Visualization(x_train, y_train, y_gt, y_pred, "Initial")
 
     # Training the Model
     loss_rec = []
@@ -47,10 +48,11 @@ if __name__ == "__main__":
     # Show Fitting Curve
     nn.feed({"x":x_train})
     y_pred = nn.forward()
-    Visualization(x_train, y_train, y_gt, y_pred)
+    Visualization(x_train, y_train, y_gt, y_pred, "Result")
 
     # Show Loss Record
     plt.figure()
+    plt.title("Loss")
     plt.plot(loss_rec[100:])
     plt.show()
     

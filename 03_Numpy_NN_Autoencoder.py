@@ -61,9 +61,10 @@ if __name__ == "__main__":
 
         if i%1000 == 0:
             print("Save Fig ...")
-            x_fig = np.concatenate((x_batch_noise[0:4], x_re[0:4], x_batch_noise[4:8], x_re[4:8]), axis=0)
+            x_fig = np.concatenate((x_batch[0:4], x_re[0:4], x_batch_noise[4:8], x_re[4:8]), axis=0)
             samp_name = out_folder + str(int(i/1000)).zfill(4) + '.png'
             SaveFig(samp_name, x_fig, [4,4], [28,28])
-
+    
+    plt.title("Loss")
     plt.plot(loss_rec)
     plt.show()
